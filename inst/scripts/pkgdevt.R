@@ -113,6 +113,11 @@ usethis::use_news_md()
 usethis::use_testthat()
 usethis::use_test("test")
 
+# coverage ----------------------------------------------------------------
+
+usethis::use_coverage()
+usethis::use_github_action("test-coverage")
+
 # build -------------------------------------------------------------------
 
 # check build tools
