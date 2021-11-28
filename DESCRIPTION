@@ -18,6 +18,7 @@ Imports:
     rlang (>= 0.1.2),
     tibble
 Suggests: 
+    covr,
     attachment,
     attempt,
     devtools,
