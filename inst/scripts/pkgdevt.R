@@ -124,6 +124,7 @@ usethis::use_github_action("test-coverage")
 fs::file_create("cliff.toml")
 system("git-cliff -i")
 system("git-cliff -o inst/CHANGELOG.md")
+system("git-cliff -o NEWS.md")
 
 # build -------------------------------------------------------------------
 
