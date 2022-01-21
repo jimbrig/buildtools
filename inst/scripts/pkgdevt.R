@@ -100,14 +100,29 @@ knitr::knit("README.Rmd")
 
 
 # functions ---------------------------------------------------------------
-
-
-# modules -----------------------------------------------------------------
+c(
+  "build",
+  "deploy",
+  "docker",
+  "sysreqs",
+  "pkgdeps",
+  "logging",
+  "meta",
+  "cache",
+  "utils"
+) |> purrr::walk(usethis::use_r, open = FALSE)
 
 
 # documentation -----------------------------------------------------------
 
 usethis::use_news_md()
+
+
+# vignettes ---------------------------------------------------------------
+
+usethis::use_vignette("buildtools")
+usethis::use_vignette("sysreqs")
+
 
 # tests -------------------------------------------------------------------
 usethis::use_testthat()

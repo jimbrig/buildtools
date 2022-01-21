@@ -1,0 +1,79 @@
+---
+title: "System Requirements"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{System Requirements}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  error = FALSE,
+  echo = TRUE,
+  eval = TRUE,
+  results = "asis"
+)
+```
+
+```{r setup}
+# library(buildtools)
+```
+
+## System Requirements Packages and Resources
+
+Main resource is the [RStudio System Requirements API/Database]() as well as the [R-Hub System Requirements API](https://sysreqs.r-hub.io/).
+
+- Call the R-Hub API using URI path `https://sysreqs.r-hub.io/pkg/<pkg1>,<pkg2>,<pkg3>/<platform>` or with `httr`:
+
+```{r r_hub_api_example}
+pkgs <- c("magick", "tinytex")
+platform <- "linux-x86_64-debian-gcc"
+base_url <- "https://sysreqs.r-hub.io/pkg/"
+uri <- paste0(base_url, paste(pkgs, collapse = ","), "/", platform)
+
+res <- httr::GET(uri)
+httr::content(res, type = "application/json", as = "parsed") |> unlist()
+```
+
+bundling that code into a nice little function:
+
+```{r r_hub_api_function}
+#' Get Sysreqs - R-Hub API Method
+#' 
+#' This method of the `get_sysreqs` generic performs a `GET` request to the R-Hub SysReqs API at path: `https://sysreqs.r-hub.io/pkg/<pkg1>,<pkg2>,<pkg3>/<platform>` using [httr::GET()]. 
+#'
+#' @param pkgs Character vector of R packages to check for.
+#' @param platform Defaults to "linux-x86_64-debian-gcc" for Docker images.
+#'
+#' @return Character vector of system requirements associated with the supplied packages.
+#' @export
+#'
+#' @examples
+#' pkgs <- c("magick", "tinytex")
+#' get_sysreqs.rhub(pkgs)
+get_sysreqs.rhub <- function(pkgs = NULL, platform = "linux-x86_64-debian-gcc") {
+  
+  if (is.null(pkgs)) return(NULL)
+  base_url <- "https://sysreqs.r-hub.io/pkg/"
+  uri <- paste0(base_url, paste(pkgs, collapse = ","), "/", platform)
+  
+  uri %>%
+    httr::GET() %>%
+    httr::content(type = 'application/json', as = 'parsed') %>%
+    unlist()
+  
+}
+```
+
+
+- [r-hub/sysreqs](https://github.com/r-hub/sysreqs)
+- [r-lib/pak](https://github.com/r-lib/pak): `pak::pkg_system_requirements()` function.
+- [cole-brokamp/dep](https://github.com/cole-brokamp/dep): `dep::get_sysreqs()`
+- []()
+
+```{r sysreqs_packages}
+```

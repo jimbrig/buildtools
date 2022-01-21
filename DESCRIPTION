@@ -2,30 +2,29 @@ Package: buildtools
 Title: buildtools R Package
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Jimmy",
-           family = "Briggs",
-           role = c("aut", "cre"),
-           email = "jimbrig2011@outlook.com",
+    person("Jimmy", "Briggs", , "jimbrig2011@outlook.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7489-8787"))
-Description: Tools for isolating, detecting dependencies,
-    scaffolding, and building deployable, reproducible developer
-    environments in R.
+Description: Tools for isolating, detecting dependencies, scaffolding, and
+    building deployable, reproducible developer environments in R.
 License: MIT + file LICENSE
 URL: https://github.com/jimbrig/buildtools
 BugReports: https://github.com/jimbrig/buildtools/issues
 Imports: 
+    dep,
+    desc,
+    fs,
+    httr,
     magrittr,
+    pak,
     rlang (>= 0.1.2),
+    sysreqs,
     tibble
 Suggests: 
-    covr,
-    attachment,
-    attempt,
-    devtools,
     knitr,
     rmarkdown,
-    roxygen2,
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
