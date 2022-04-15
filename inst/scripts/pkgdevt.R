@@ -113,6 +113,19 @@ usethis::use_news_md()
 usethis::use_testthat()
 usethis::use_test("test")
 
+# coverage ----------------------------------------------------------------
+
+usethis::use_coverage()
+usethis::use_github_action("test-coverage")
+
+
+# changelog ---------------------------------------------------------------
+
+fs::file_create("cliff.toml")
+system("git-cliff -i")
+system("git-cliff -o inst/CHANGELOG.md")
+system("git-cliff -o NEWS.md")
+
 # build -------------------------------------------------------------------
 
 # check build tools
