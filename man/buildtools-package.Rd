@@ -6,9 +6,7 @@
 \alias{buildtools-package}
 \title{buildtools: buildtools R Package}
 \description{
-Tools for isolating, detecting dependencies,
-    scaffolding, and building deployable, reproducible developer
-    environments in R.
+Tools for isolating, detecting dependencies, scaffolding, and building deployable, reproducible developer environments in R.
 }
 \seealso{
 Useful links:
