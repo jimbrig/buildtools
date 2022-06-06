@@ -389,5 +389,3 @@ dir2imagename <- function(dir){
   dir <- stringr::str_remove(dir, "^[0-9]")
   dir
 }
-
-

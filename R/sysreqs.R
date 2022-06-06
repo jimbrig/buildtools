@@ -1,3 +1,15 @@
+#' Get System Requirements for R Packages
+#'
+#' @param pkgs R package dependencies as a character vector
+#'
+#' @return character vector
+#' @export
+#'
+#' @examples \dontrun{
+#' get_sysreqs("tidyverse")
+#' get_sysreqs(c("plumber", "rmarkdown"))
+#' }
+get_sysreqs <- function(pkgs) {
 
   purrr::map(
     pkgs,
