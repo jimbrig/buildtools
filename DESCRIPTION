@@ -2,7 +2,7 @@ Package: buildtools
 Title: buildtools R Package
 Version: 0.0.0.9000
 Authors@R: 
-    person("Jimmy", "Briggs", , "jimbrig2011@outlook.com", role = c("aut", "cre"),
+    person("Jimmy", "Briggs", , "jimmy.briggs@jimbrig.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7489-8787"))
 Description: Tools for isolating, detecting dependencies, scaffolding, and
     building deployable, reproducible developer environments in R.
@@ -22,7 +22,27 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    cli,
+    crayon,
+    formatR,
+    fs,
+    glue,
+    here,
+    jsonlite,
+    knitr,
+    magrittr,
+    pak,
+    purrr,
+    remotes,
+    rlang (>= 0.1.2),
+    stringr,
+    tibble,
+    usethis,
+    utils,
+    whoami,
+    xfun,
+    yaml,
+    testthat (>= 3.0.0)    
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
@@ -30,4 +50,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0

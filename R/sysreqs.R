@@ -79,9 +79,3 @@ get_sysreqs.pak <- function(pkgs, ...) {
   purrr::map_chr(pkgs, pak::pkg_system_requirements, os = "ubuntu", os_release = "20.04")
 }
 
-get_sysreqs.rstudio <- function(pkgs, ...) {
-
-}
-
-
-

@@ -1,0 +1,26 @@
+shiny:
+  Package: shiny
+  Repository: CRAN
+  Version: 1.7.1
+shinyWidgets:
+  Package: shinyWidgets
+  Repository: CRAN
+  Version: 0.7.0
+attachment:
+  Package: attachment
+  GithubUsername: thinkR-open
+  GithubRepo: attachment
+  GithubRef: HEAD
+  GithubSHA1: e064f7ddee4e2d103719e2be29a6a78135fff5b4
+config:
+  Package: config
+  Repository: CRAN
+  Version: 0.3.1
+magick:
+  Package: magick
+  Repository: CRAN
+  Version: 2.7.3
+tinytex:
+  Package: tinytex
+  Repository: CRAN
+  Version: '0.39'
