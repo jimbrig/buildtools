@@ -1,3 +1,6 @@
+
+# pak::pak("r-hub/sysreqs")
+
 #' Get Package Dependencies
 #'
 #' @param app_dir directory to scan
@@ -285,3 +288,4 @@ github_install_string <- function(dep) {
 r_command_string <- function(command) {
   paste0("RUN R -e \"", command, "\"")
 }
+
