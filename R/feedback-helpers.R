@@ -29,14 +29,12 @@ msg_field <- function(x) {
 #' @importFrom crayon yellow
 #' @importFrom glue glue_collapse
 msg_value <- function(x) {
-
   if (is.character(x)) {
     x <- encodeString(x, quote = "'")
   }
   x <- crayon::yellow(x)
   x <- glue::glue_collapse(x, sep = ", ")
   x
-
 }
 
 #' @rdname feedback
@@ -142,4 +140,3 @@ indent <- function(x, first = "  ", indent = first) {
   x <- gsub("\n", paste0("\n", indent), x)
   paste0(first, x)
 }
-

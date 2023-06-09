@@ -42,7 +42,7 @@ devtools::install_github("jimbrig/buildtools")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-#library(buildtools)
+# library(buildtools)
 ## basic example code
 ```
 

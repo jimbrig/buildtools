@@ -10,16 +10,15 @@
 #' get_sysreqs(c("plumber", "rmarkdown"))
 #' }
 get_sysreqs <- function(pkgs) {
-
   purrr::map(
     pkgs,
-    pak::pkg_system_requirements, os = "ubuntu", os_release = "20.04"
+    pak::pkg_system_requirements,
+    os = "ubuntu", os_release = "20.04"
   ) %>%
     purrr::set_names(pkgs) %>%
     purrr::flatten_chr() %>%
     unique() %>%
     stringr::str_replace_all(., "apt-get install -y ", "")
-
 }
 
 #' Get system requirements by R package using Remotes
@@ -33,10 +32,9 @@ get_sysreqs <- function(pkgs) {
 #'
 #' @importFrom remotes package_deps
 get_sysreqs_remotes <- function(packages, quiet = TRUE, batch_n = 30) {
-
   all_deps <- sort(unique(c(packages, unlist(remotes::package_deps(packages)$package))))
 
-  sp <- split(all_deps, ceiling(seq_along(all_deps)/batch_n))
+  sp <- split(all_deps, ceiling(seq_along(all_deps) / batch_n))
 
   hold <- lapply(sp, function(.x) {
     get_batch_sysreqs(.x, quiet = quiet)
@@ -47,7 +45,6 @@ get_sysreqs_remotes <- function(packages, quiet = TRUE, batch_n = 30) {
     sort()
 
   setdiff(hold, sysreqs_in_base)
-
 }
 
 #' @keywords internal
@@ -56,9 +53,10 @@ get_sysreqs_remotes <- function(packages, quiet = TRUE, batch_n = 30) {
 #' @importFrom jsonlite fromJSON
 #' @importFrom utils download.file
 get_batch_sysreqs <- function(all_deps, quiet = TRUE) {
-
-  url <- sprintf("https://sysreqs.r-hub.io/pkg/%s/linux-x86_64-debian-gcc",
-                 paste(all_deps, collapse = ","))
+  url <- sprintf(
+    "https://sysreqs.r-hub.io/pkg/%s/linux-x86_64-debian-gcc",
+    paste(all_deps, collapse = ",")
+  )
 
   path <- fs::file_temp()
 
@@ -69,12 +67,13 @@ get_batch_sysreqs <- function(all_deps, quiet = TRUE) {
   fs::file_delete(path)
 
   unique(out[!is.na(out)])
-
 }
 
-sysreqs_in_base <- c("gdebi-core",
-                     "git-core",
-                     "libcurl4-gnutls-dev",
-                     "wget")
+sysreqs_in_base <- c(
+  "gdebi-core",
+  "git-core",
+  "libcurl4-gnutls-dev",
+  "wget"
+)
 
 # get_sysreqs("inst/testapp")
