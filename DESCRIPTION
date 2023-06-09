@@ -12,6 +12,7 @@ BugReports: https://github.com/jimbrig/buildtools/issues
 Imports: 
     cli,
     crayon,
+    dplyr,
     formatR,
     fs,
     glue,
@@ -37,4 +38,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
