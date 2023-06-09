@@ -19,6 +19,7 @@ coverage](https://codecov.io/gh/jimbrig/buildtools/branch/main/graph/badge.svg)]
 [![lint](https://github.com/jimbrig/buildtools/actions/workflows/lint.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/lint.yml)
 [![pkgdown](https://github.com/jimbrig/buildtools/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/pkgdown.yml)
 [![style](https://github.com/jimbrig/buildtools/actions/workflows/style.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/style.yml)
+[![pkgdown](https://github.com/jimbrig/buildtools/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/pkgdown.yaml)
 <!-- badges: end -->
 
 The goal of buildtools is to …
