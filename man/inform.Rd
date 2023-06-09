@@ -12,18 +12,40 @@ inform(...)
   \describe{
     \item{\code{message}}{The message to display, formatted as a \strong{bulleted
 list}. The first element is displayed as an \emph{alert} bullet
-prefixed with \code{!} by default. Elements named \code{"*"}, \code{"i"}, and
-\code{"x"} are formatted as regular, info, and cross bullets
-respectively. Se\ifelse{html}{\link[rlang:topic-condition-formatting]{Formatting messages with cli}}{\link[rlang:topic-condition-formatting]{Formatting messages with cli}})` for more
-about bulleted messaging.
+prefixed with \code{!} by default. Elements named \code{"*"}, \code{"i"}, \code{"v"},
+\code{"x"}, and \code{"!"} are formatted as regular, info, success,
+failure, and error bullets respectively. See \ifelse{html}{\link[rlang:topic-condition-formatting]{Formatting messages with cli}}{\link[rlang:topic-condition-formatting]{Formatting messages with cli}}
+for more about bulleted messaging.
 
 If a message is not supplied, it is expected that the message is
 generated \strong{lazily} through \code{\link[rlang:cnd_header]{cnd_header()}} and \code{\link[rlang:cnd_body]{cnd_body()}}
 methods. In that case, \code{class} must be supplied. Only \code{inform()}
 allows empty messages as it is occasionally useful to build user
-output incrementally.}
+output incrementally.
+
+If a function, it is stored in the \code{header} field of the error
+condition. This acts as a \code{\link[rlang:cnd_header]{cnd_header()}} method that is invoked
+lazily when the error message is displayed.}
     \item{\code{class}}{Subclass of the condition.}
     \item{\code{body,footer}}{Additional bullets.}
+    \item{\code{parent}}{Supply \code{parent} when you rethrow an error from a
+condition handler (e.g. with \code{\link[rlang:try_fetch]{try_fetch()}}).
+\itemize{
+\item If \code{parent} is a condition object, a \emph{chained error} is
+created, which is useful when you want to enhance an error with
+more details, while still retaining the original information.
+\item If \code{parent} is \code{NA}, it indicates an unchained rethrow, which
+is useful when you want to take ownership over an error and
+rethrow it with a custom message that better fits the
+surrounding context.
+
+Technically, supplying \code{NA} lets \code{abort()} know it is called
+from a condition handler. This helps it create simpler
+backtraces where the condition handling context is hidden by
+default.
+}
+
+For more information about error calls, see \ifelse{html}{\link[rlang:topic-error-chaining]{Including contextual information with error chains}}{\link[rlang:topic-error-chaining]{Including contextual information with error chains}}.}
     \item{\code{use_cli_format}}{Whether to format \code{message} lazily using
 \href{https://cli.r-lib.org/}{cli} if available. This results in
 prettier and more accurate formatting of messages. See
@@ -34,6 +56,11 @@ If set to \code{TRUE}, \code{message} should be a character vector of
 individual and unformatted lines. Any newline character \code{"\\\n"}
 already present in \code{message} is reformatted by cli's paragraph
 formatter. See \ifelse{html}{\link[rlang:topic-condition-formatting]{Formatting messages with cli}}{\link[rlang:topic-condition-formatting]{Formatting messages with cli}}.}
+    \item{\code{.inherit}}{Whether the condition inherits from \code{parent}
+according to \code{\link[rlang:cnd_inherits]{cnd_inherits()}} and \code{\link[rlang:try_fetch]{try_fetch()}}. By default,
+parent conditions of higher severity are not inherited. For
+instance an error chained to a warning is not inherited to avoid
+unexpectedly catching an error downgraded to a warning.}
     \item{\code{.file}}{A connection or a string specifying where to print the
 message. The default depends on the context, see the \code{stdout} vs
 \code{stderr} section.}
