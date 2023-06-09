@@ -4,3 +4,12 @@
 ^README\.Rmd$
 ^codecov\.yml$
 ^\.github$
+^dev$
+^cliff\.toml$
+^docs$
+^\.vscode$
+^Dockerfile$
+^\.dockerignore$
+^\.gitignore$
+^\.gitattributes$
+^\.editorconfig$
