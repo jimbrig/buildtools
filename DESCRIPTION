@@ -7,7 +7,8 @@ Authors@R:
 Description: Tools for isolating, detecting dependencies, scaffolding, and
     building deployable, reproducible developer environments in R.
 License: MIT + file LICENSE
-URL: https://github.com/jimbrig/buildtools
+URL: https://github.com/jimbrig/buildtools,
+    http://docs.jimbrig.com/buildtools/
 BugReports: https://github.com/jimbrig/buildtools/issues
 Imports: 
     cli,

@@ -12,6 +12,7 @@ Tools for isolating, detecting dependencies, scaffolding, and building deployabl
 Useful links:
 \itemize{
   \item \url{https://github.com/jimbrig/buildtools}
+  \item \url{http://docs.jimbrig.com/buildtools/}
   \item Report bugs at \url{https://github.com/jimbrig/buildtools/issues}
 }
 
