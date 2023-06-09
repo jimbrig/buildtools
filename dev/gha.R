@@ -1,0 +1,12 @@
+require(usethis)
+require(actions)
+require(gh)
+require(pkgdown)
+require(rmarkdown)
+
+usethis::use_github_action("pkgdown")
+usethis::use_github_action("check-standard")
+usethis::use_github_action("check-release")
+usethis::use_github_action("document")
+usethis::use_github_action("lint")
+usethis::use_github_action("style")
