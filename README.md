@@ -11,6 +11,14 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 WIP](https://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 [![Codecov test
 coverage](https://codecov.io/gh/jimbrig/buildtools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jimbrig/buildtools?branch=main)
+[![check](https://github.com/jimbrig/buildtools/actions/workflows/check.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/check.yml)
+[![changelog](https://github.com/jimbrig/buildtools/actions/workflows/changelog.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/changelog.yml)
+[![check-release](https://github.com/jimbrig/buildtools/actions/workflows/check-release.yaml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/check-release.yaml)
+[![coverage](https://github.com/jimbrig/buildtools/actions/workflows/coverage.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/coverage.yml)
+[![document](https://github.com/jimbrig/buildtools/actions/workflows/document.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/document.yml)
+[![lint](https://github.com/jimbrig/buildtools/actions/workflows/lint.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/lint.yml)
+[![pkgdown](https://github.com/jimbrig/buildtools/actions/workflows/pkgdown.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/pkgdown.yml)
+[![style](https://github.com/jimbrig/buildtools/actions/workflows/style.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/style.yml)
 <!-- badges: end -->
 
 The goal of buildtools is to …
@@ -36,6 +44,6 @@ devtools::install_github("jimbrig/buildtools")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-#library(buildtools)
+# library(buildtools)
 ## basic example code
 ```
