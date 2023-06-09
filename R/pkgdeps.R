@@ -11,7 +11,6 @@
 #' @importFrom glue glue
 #' @importFrom purrr safely map_depth pluck compact map
 get_pkgdeps <- function(app_dir = "shiny_app", ignores = NULL, verbose = TRUE) {
-
   if (!dir.exists(app_dir)) stop(glue::glue("Invalid `app_dir` argument. `{app_dir}` does not exist."))
   init_pkg_names <- get_dependent_packages(app_dir)
   if (length(init_pkg_names) == 0) {
@@ -23,7 +22,8 @@ get_pkgdeps <- function(app_dir = "shiny_app", ignores = NULL, verbose = TRUE) {
   )
   names(hold) <- init_pkg_names
   errors <- purrr::map_depth(hold, 1, purrr::pluck, "error") %>%
-    purrr::compact() %>% names()
+    purrr::compact() %>%
+    names()
   hold <- hold[!(names(hold) %in% errors)]
   if (length(errors) > 0 && verbose) {
     cli::cli_alert_danger("Silently removing detected invalid packages: {msg_value(errors)}")
@@ -31,13 +31,15 @@ get_pkgdeps <- function(app_dir = "shiny_app", ignores = NULL, verbose = TRUE) {
 
   deps <- purrr::map_depth(hold, 1, purrr::pluck, "result") %>%
     purrr::map(function(x) {
-      if (length(x) == 0)
+      if (length(x) == 0) {
         return(NULL)
-      else return(x)
-    }) %>% purrr::compact()
+      } else {
+        return(x)
+      }
+    }) %>%
+    purrr::compact()
 
   deps[!(names(deps) %in% c(ignores, "remotes"))]
-
 }
 
 #' Create a `deps.yml` Package Dependency File
@@ -65,11 +67,13 @@ create_pkgdeps_file <- function(deps = NULL, app_dir = "shiny_app", ...) {
 }
 
 get_dependent_packages <- function(directory = getwd()) {
-  fls <- list.files(path = directory,
-                    pattern = "^.*\\.R$|^.*\\.Rmd$",
-                    full.names = TRUE,
-                    recursive = TRUE,
-                    ignore.case = TRUE)
+  fls <- list.files(
+    path = directory,
+    pattern = "^.*\\.R$|^.*\\.Rmd$",
+    full.names = TRUE,
+    recursive = TRUE,
+    ignore.case = TRUE
+  )
   pkg_names <- unlist(sapply(fls, parse_packages))
   pkg_names <- unique(pkg_names)
   if (length(pkg_names) == 0) {
@@ -102,7 +106,6 @@ get_package_deps <- function(path = getwd(),
                              write_yaml = TRUE,
                              write_r = TRUE,
                              include_versions = TRUE) {
-
   # get package dependencies based off supplied directory
   # first detect any R scripts or RMD files
   files <- list.files(
@@ -116,7 +119,11 @@ get_package_deps <- function(path = getwd(),
   pkg_names_init <- lapply(files, purrr::safely(parse_packages))
   pkg_names <- purrr::map_depth(pkg_names_init, 1, purrr::pluck, "result") %>%
     purrr::map(function(x) {
-      if (length(x) == 0) return(NULL) else return(x)
+      if (length(x) == 0) {
+        return(NULL)
+      } else {
+        return(x)
+      }
     }) %>%
     purrr::flatten_chr() %>%
     unique()
@@ -131,7 +138,11 @@ get_package_deps <- function(path = getwd(),
 
   out <- purrr::map_depth(hold, 1, purrr::pluck, "result") %>%
     purrr::map(function(x) {
-      if (length(x) == 0) return(NULL) else return(x)
+      if (length(x) == 0) {
+        return(NULL)
+      } else {
+        return(x)
+      }
     }) %>%
     purrr::compact()
 
@@ -155,8 +166,10 @@ get_package_deps <- function(path = getwd(),
   }
 
   if (write_r) {
-    txt <- paste0("options(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/latest'))\ninstall.packages('remotes')\n",
-                  paste(df$install_cmd, collapse = "\n"))
+    txt <- paste0(
+      "options(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/latest'))\ninstall.packages('remotes')\n",
+      paste(df$install_cmd, collapse = "\n")
+    )
     cat(txt, file = fs::path(path, "deps.R"))
     cli::cat_bullet(
       "Created file `deps.R`.",
@@ -168,7 +181,6 @@ get_package_deps <- function(path = getwd(),
   out_df <- df %>% dplyr::select(package = Package, src = Repository, version = Version, install_cmd)
 
   return(invisible(out_df))
-
 }
 
 
@@ -182,7 +194,7 @@ get_package_details <- function(pkg_name) {
     "base"
   if (!is.cran & !is.github & !is.base) {
     stop("CRAN or GitHub info for ", pkg_name, " not found. Other packages repos are not supported.",
-         call. = FALSE
+      call. = FALSE
     )
   }
   if (is.cran) {
@@ -220,16 +232,17 @@ get_lines <- function(file_name) {
     knitr::purl(input = file_name, output = tmp.file, quiet = TRUE)
     file_name <- tmp.file
   }
-  lns <- tryCatch(formatR::tidy_source(file_name,
-                                       comment = FALSE,
-                                       blank = FALSE, arrow = TRUE, brace.newline = TRUE, output = FALSE
-  )$text.mask,
-  error = function(e) {
-    message(paste("Could not parse R code in:", file_name))
-    message("   Make sure you are specifying the right file name")
-    message("   and check for syntax errors")
-    stop("", call. = FALSE)
-  }
+  lns <- tryCatch(
+    formatR::tidy_source(file_name,
+      comment = FALSE,
+      blank = FALSE, arrow = TRUE, brace.newline = TRUE, output = FALSE
+    )$text.mask,
+    error = function(e) {
+      message(paste("Could not parse R code in:", file_name))
+      message("   Make sure you are specifying the right file name")
+      message("   and check for syntax errors")
+      stop("", call. = FALSE)
+    }
   )
   if (is.null(lns)) {
     stop("No parsed text available", call. = FALSE)
