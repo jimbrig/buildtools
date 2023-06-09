@@ -1,0 +1,58 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "R",
+			"code": [
+				"devtools::build()"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "R: Build"
+		},
+		{
+			"type": "R",
+			"code": [
+				"devtools::test()"
+			],
+			"problemMatcher": [
+				"$testthat"
+			],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"label": "R: Test"
+		},
+		{
+			"type": "R",
+			"code": [
+				"devtools::check()"
+			],
+			"group": "test",
+			"problemMatcher": [],
+			"label": "R: Check"
+		},
+		{
+			"type": "R",
+			"code": [
+				"devtools::install()"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"label": "R: Install"
+		},
+		{
+			"type": "R",
+			"code": [
+				"devtools::build(binary = TRUE, args = c('--preclean'))"
+			],
+			"group": "build",
+			"problemMatcher": [],
+			"label": "R: Build Binary"
+		}
+	]
+}
