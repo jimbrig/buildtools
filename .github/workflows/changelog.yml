@@ -1,4 +1,4 @@
-name: Generate CHANGELOG.md
+name: Update Changelog
 on:
   repository_dispatch:
   workflow_dispatch:

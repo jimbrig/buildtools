@@ -6,13 +6,13 @@
 #'
 #' @export
 open_guide <- function(ext = "html") {
-    if (ext == "html") {
-    guide_path <- system.file('report/_book/index.html', package = 'buildtools')
-    } else if (ext == "pdf") {
-    guide_path <- system.file('report/_book/report.pdf', package = 'buildtools')
-    } else {
-    guide_path <- system.file(paste0("report/_book/report.", ext[1]), package = 'buildtools')
-    }
+  if (ext == "html") {
+    guide_path <- system.file("report/_book/index.html", package = "buildtools")
+  } else if (ext == "pdf") {
+    guide_path <- system.file("report/_book/report.pdf", package = "buildtools")
+  } else {
+    guide_path <- system.file(paste0("report/_book/report.", ext[1]), package = "buildtools")
+  }
 
-  browseURL(paste0('file://', guide_path))
+  browseURL(paste0("file://", guide_path))
 }
