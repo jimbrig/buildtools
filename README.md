@@ -5,12 +5,9 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Project Status:
-WIP](https://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-[![Codecov test
-coverage](https://codecov.io/gh/jimbrig/buildtools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jimbrig/buildtools?branch=main)
+[![Lifecycle:experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Project Status:WIP](https://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![Codecov](https://codecov.io/gh/jimbrig/buildtools/branch/main/graph/badge.svg)](https://app.codecov.io/gh/jimbrig/buildtools?branch=main)
 [![check](https://github.com/jimbrig/buildtools/actions/workflows/check.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/check.yml)
 [![changelog](https://github.com/jimbrig/buildtools/actions/workflows/changelog.yml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/changelog.yml)
 [![check-release](https://github.com/jimbrig/buildtools/actions/workflows/check-release.yaml/badge.svg)](https://github.com/jimbrig/buildtools/actions/workflows/check-release.yaml)
