@@ -22,3 +22,7 @@ workflows |> purrr::walk(
 )
 
 devtools::build_readme()
+usethis::use_github_labels(
+    labels = gh_labels$labels, colours = gh_labels$colours,
+    descriptions = gh_labels$descriptions, delete_default = TRUE
+)
