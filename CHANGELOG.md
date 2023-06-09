@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 - Add badges to README
 - Man pages
 - Document man pages
+- Update README
+- Update README
 
 ### Features
 
@@ -24,6 +26,15 @@ All notable changes to this project will be documented in this file.
 - Add guide and pkgdown funcs
 - Add vscode
 - Add new changelog GHA
+- Add various R GHAs
+- Dev scripts
+- Dev scripts
+- Updates
+- Packge enhancements
+
+### Miscellaneous Tasks
+
+- Autopublish 2023-06-09T00:02:21Z
 
 ### Refactor
 
@@ -33,11 +44,16 @@ All notable changes to this project will be documented in this file.
 
 - Create testapp in inst dir
 
+### Bug
+
+- Fix GHA
+
 ### Config
 
 - Update NAMESPACE and DESCRIPTION
 - Add git dotfiles
 - Update .Rbuildignore
+- Init editorconfig
 
 ### Deps
 
